@@ -1,0 +1,22 @@
+<div id="customAppPopup" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title {{ color }}">{{ title }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <p>{{ message }}</p>
+          <form class="form-horizontal" ng-show="showInput">
+            <div class="form-group">
+              <input type="email" ng-model="popupInput" class="form-control" name="input">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="runCallback()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

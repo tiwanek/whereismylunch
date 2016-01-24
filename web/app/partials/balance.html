@@ -1,0 +1,27 @@
+<div class="container">
+  <table st-table="balancesDisplay" st-safe-src="balances" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="balance in balancesDisplay" st-select-row="balance" st-select-mode="single" ng-show="hasLoaded">
+        <td>{{ balance.user }}</td>
+        <td>{{ balance.value / 100 | currency }}</td>
+      </tr>
+      <tr ng-show="!hasLoaded">
+        <td colspan="2" class="text-center"><i>... Loading ...</i></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="7" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <button class="btn btn-default" ng-click="addBalance()">Add</button>
+</div>

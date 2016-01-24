@@ -1,0 +1,34 @@
+<div class="container">
+  <table st-table="lunchesDisplay" st-safe-src="lunches" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Creator</th>
+        <th>Restaurant</th>
+        <th>Order time</th>
+        <th>Delivery time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="lunch in lunchesDisplay" st-select-row="lunch" st-select-mode="single" ng-show="hasLoaded">
+        <td>{{ lunch.creator.name }}</td>
+        <td>{{ lunch.restaurant.name }}</td>
+        <td>{{ lunch.order_date | date }}</td>
+        <td>{{ lunch.delivery_date | date }}</td>
+        <td>{{ lunch.status | status }}</td>
+      </tr>
+      <tr ng-show="!hasLoaded">
+        <td colspan="5" class="text-center"><i>... Loading ...</i></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="7" st-displayed-pages="7"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <button class="btn btn-default" ng-click="addLunch()">Add</button>
+  <button class="btn btn-default" ng-click="showLunch()" ng-disabled="!canShow">Show</button>
+</div>

@@ -1,0 +1,5 @@
+flask == 0.10.1
+flask-restful == 0.3.5
+flask-cors == 2.1.2
+flask-script == 2.0.5
+peewee == 2.8.0

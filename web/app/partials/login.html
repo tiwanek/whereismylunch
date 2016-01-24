@@ -1,0 +1,107 @@
+<ul class="nav navbar-nav navbar-header" ng-controller="loginController">
+  <div ng-switch="user.logged">
+    <div ng-switch-when="true">
+      <li class="dropdown">
+        <div class="btn-group">
+          <a class="btn btn-success navbar-btn">{{ user.name }}</a>
+          <a class="btn btn-success navbar-btn dropdown-toggle" data-toggle="dropdown"><strong class="caret"></strong></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a ng-click="editUser()">Settings</a></li>
+            <li><a ng-click="logout()">Logout</a></li>
+          </ul>
+        </div>
+      </li>
+    </div>
+    <div ng-switch-default>
+      <a class="btn btn-default navbar-btn" data-toggle="modal" data-target="#registerModal">Sign Up</a>
+      <a class="btn btn-success navbar-btn" data-toggle="modal" data-target="#loginModal">Sign In</a>
+    </div>
+  </div>
+  <div id="registerModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form name="registerForm" ng-submit="submitRegister()">
+          <div class="modal-header">
+            <h4 class="modal-title">Register User</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Name:</label>
+              <input type="text" name="name" class="form-control" ng-model="registerName" ng-minlength="6" required>
+              <div ng-messages="registerForm.name.$error" ng-if="registerForm.name.$dirty">
+                <div ng-message="minlength" class="text-danger">Your name is too short</div>
+                <div ng-message="required" class="text-danger">Your name is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Password:</label>
+              <input type="password" name="password" class="form-control" ng-model="registerPassword" ng-minlength="7" required>
+              <div ng-messages="registerForm.password.$error" ng-if="registerForm.password.$dirty">
+                <div ng-message="minlength" class="text-danger">Password is too short</div>
+                <div ng-message="required" class="text-danger">Password is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Repeat password:</label>
+              <input type="password" name="repeat_password" class="form-control" id="input" ng-model="registerPasswordRepeat" ng-minlength="7" required>
+              <div ng-messages="registerForm.repeat_password.$error" ng-if="registerForm.repeat_password.$dirty">
+                <div ng-message="minlength" class="text-danger">Password is too short</div>
+                <div ng-message="required" class="text-danger">Password is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email address:</label>
+              <input type="email" name="email" class="form-control" id="input" ng-model="registerEmail" ng-pattern="emailRegex" required>
+              <div ng-messages="registerForm.email.$error" ng-if="registerForm.email.$dirty">
+                <div ng-message="pattern" class="text-danger">This is not valid email address</div>
+                <div ng-message="required" class="text-danger">Email is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="text-danger"><b>{{ registerError }}</b></div>
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" class="btn btn-default" value="Register">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="loginModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form ng-submit="submitLogin()" name="loginForm">
+          <div class="modal-header">
+            <h4 class="modal-title">Login User</h4>
+          </div>
+          <div class="modal-body">
+             <div class="form-group">
+              <label for="usr">Name:</label>
+              <input type="text" class="form-control" ng-model="loginName" name="name" required>
+              <div ng-messages="loginForm.name.$error" ng-if="loginForm.name.$dirty">
+                <div ng-message="required" class="text-danger">Your name is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" ng-model="loginPassword" name="password" required>
+              <div ng-messages="loginForm.password.$error" ng-if="loginForm.password.$dirty">
+                <div ng-message="required" class="text-danger">Password is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="pull-left">
+              <a ng-click="forgotPassword()">Forgot password?</a>
+            </div>
+            <div class="pull-right">
+              <div class="danger"><b>{{ loginError }}</b></div>
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-default" value="Login">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ul>

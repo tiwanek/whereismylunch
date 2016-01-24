@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+    <form name="lunchForm" ng-submit="submitLunch()" class="form-horizontal">
+      <div class="form-group">
+        <h4>New lunch</h4>
+      </div>
+      <div class="form-group">
+        <label>Restaurant:</label>
+        <select ng-model="lunchRestaurant" name="restaurantId" required>
+          <option ng-repeat="restaurant in restaurants" value="{{ restaurant.id }}">{{ restaurant.name }}</option>
+        </select>
+        <div ng-messages="lunchForm.restaurantId.$error" ng-if="lunchForm.restaurantId.$dirty">
+          <div ng-message="required" class="text-danger">Restaurant is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Order time:</label>
+        <div class="form-group">
+          <div class='input-group date' id='orderDatePicker'>
+            <input type='text' name="lunchOrderDate" class="form-control" ng-model="lunchOrderDate" required />
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+        <div ng-messages="lunchForm.lunchOrderDate.$error" ng-if="lunchForm.lunchOrderDate.$dirty">
+          <div ng-message="required" class="text-danger">Order time is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Delivery time:</label>
+        <div class="form-group">
+          <div class='input-group date' id='deliveryDatePicker'>
+            <input type='text' name="lunchDeliveryDate" class="form-control" ng-model="lunchDeliveryDate" required/>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+        <div ng-messages="lunchForm.lunchDeliveryDate.$error" ng-if="lunchForm.lunchDeliveryDate.$dirty">
+          <div ng-message="required" class="text-danger">Delivery time is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Save">
+      </div>
+    </form>
+  </div>
+</div>

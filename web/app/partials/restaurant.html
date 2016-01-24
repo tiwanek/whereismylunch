@@ -1,0 +1,28 @@
+<div class="container">
+  <table st-table="restaurantsDisplay" st-safe-src="restaurants" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Restaurant</th>
+        <th>Site</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="restuarant in restaurantsDisplay" st-select-row="restuarant" st-select-mode="single" ng-show="hasLoaded">
+        <td>{{ restuarant.name }}</td>
+        <td ng-bind-html="restuarant.site | linky:'_blank'"></td>
+      </tr>
+      <tr ng-show="!hasLoaded">
+        <td colspan="2" class="text-center"><i>... Loading ...</i></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="7" st-displayed-pages="5"></div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <button class="btn btn-default" ng-click="addRestaurant()">Add</button>
+  <button class="btn btn-default" ng-click="editRestaurant()" ng-disabled="!canEdit">Edit</button>
+</div>

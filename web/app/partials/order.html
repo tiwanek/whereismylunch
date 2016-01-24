@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <h4>Lunch created by <span class="text-success">{{ lunch.creator.name }}</span> from <span class="text-success">{{ lunch.restaurant.name }}</span> (<span ng-bind-html="lunch.restaurant.site | linky:'_blank'"></span>)</h4>
+    <p>Status: {{ lunch.status | status }}</p>
+  </div>
+  <div class="row">
+    <table st-table="orders" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Menu</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="order in orders" st-select-row="order" st-select-mode="single" ng-show="hasLoaded">
+          <td>{{ order.user.name }}</td>
+          <td>{{ order.menu }}</td>
+          <td>{{ order.price / 100 | currency }}</td>
+        </tr>
+        <tr ng-show="!hasLoaded">
+          <td colspan="5" class="text-center"><i>... Loading ...</i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <p>Order total: {{ orderTotal / 100 | currency }}</p>
+  </div>
+  <div class="row">
+    <div class="pull-left">
+      <button class="btn btn-default" ng-click="joinLunch()" ng-show="canJoin">Join lunch</button>
+      <button class="btn btn-danger" ng-click="deleteOrder()" ng-show="canDelete">Delete order<span class="glyphicon glyphicon-remove"></span></button>
+    </div>
+    <div class="pull-right">
+      <button class="btn btn-success" ng-click="orderLunch()" ng-show="canOrder">Ordering<span class="glyphicon glyphicon-earphone"></span></button>
+      <button class="btn btn-success" ng-click="deliverLunch()" ng-show="canDeliver">Arrived<span class="glyphicon glyphicon-cutlery"></span></button>
+      <button class="btn btn-danger" ng-click="cancelLunch()" ng-show="canCancel">Cancel<span class="glyphicon glyphicon-remove"></span></button>
+      <button class="btn btn-default" ng-click="getOrders()" ng-show="canRefresh"><span class="glyphicon glyphicon-refresh"></span></button>
+    </div>
+  </div>
+</div>

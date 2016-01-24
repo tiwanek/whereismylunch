@@ -1,0 +1,24 @@
+[
+  {
+    "first_user": {
+      "id": 1,
+      "name": "user_a"
+    },
+    "second_user": {
+      "id": 2,
+      "name": "user_b"
+    },
+    "value": "100"
+  },
+  {
+    "first_user": {
+      "id": 2,
+      "name": "user_b"
+    },
+    "second_user": {
+      "id": 1,
+      "name": "user_a"
+    },
+    "value": "200"
+  }
+]

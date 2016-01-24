@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>.st-selected { background: grey; }</style> <!-- smart-table selection - FIXME -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Where is my lunch?</title>
+    <link rel="stylesheet" type="text/css" href="deps/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="deps/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="deps/css/bootstrap-datetimepicker.min.css">
+    <script src="deps/js/crypto-js.js"></script>
+    <script src="deps/js/jquery.min.js"></script>
+    <script src="deps/js/bootstrap.min.js"></script>
+    <script src="deps/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="deps/js/angular.min.js"></script>
+    <script src="deps/js/angular-route.min.js"></script>
+    <script src="deps/js/angular-cookies.min.js"></script>
+    <script src="deps/js/angular-messages.min.js"></script>
+    <script src="deps/js/angular-sanitize.min.js"></script>
+    <script src="deps/js/smart-table.min.js"></script>
+    <!-- TODO: refactor all scripts based on functionality, not component type -->
+    <script src="app/js/app.min.js"></script>
+  </head>
+  <body ng-app="whereismylunchApp">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" ng-href="#/">WhereIsMyLunch<span class="glyphicon glyphicon-cutlery"></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li role="presentation"><a ng-href="#/lunch">Lunch Lists</a></li>
+            <li role="presentation"><a ng-href="#/restaurant">Restaurants</a></li>
+            <li role="presentation"><a ng-href="#/balance">Balance</a></li>
+          </ul>
+          <div class="pull-right" custom-login-navbar></div>
+        </div>
+      </div>
+    </nav>
+    <main ng-view></main>
+    <div custom-app-popup></div>
+  </body>
+</html>
