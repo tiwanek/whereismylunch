@@ -51,7 +51,7 @@
           $scope.registerError = "";
         }, 1000);
       }, function(error) {
-          if (resp.status === 409) {
+          if (error === 409) {
           $scope.registerError = "Name already taken";
         } else {
           $scope.registerError = "Registration failed";
